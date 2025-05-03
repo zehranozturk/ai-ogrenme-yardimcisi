@@ -14,3 +14,4 @@ async def form_get(request: Request):
 async def form_post(request: Request, term: str = Form(...)):
     explanation = explain_with_model(term)
     return templates.TemplateResponse("index.html", {"request": request, "term": term, "explanation": explanation})
+
