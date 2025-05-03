@@ -7,64 +7,61 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #e0f7fa, #e1bee7);
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #d2f1f6, #e7c5e8);
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             min-height: 100vh;
-            padding-top: 3rem;
         }
         .container {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 20px;
             width: 100%;
+            max-width: 600px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
-            color: #4a148c;
-            margin-bottom: 1.5rem;
+            color: #5e188c;
+            margin-bottom: 2rem;
         }
         form {
             display: flex;
-            gap: 1rem;
             flex-direction: column;
+            gap: 1.2rem;
         }
-        input[type="text"] {
+        input[type="text"], select {
             padding: 1rem;
             font-size: 1rem;
-            border: 2px solid #ce93d8;
-            border-radius: 8px;
-            outline: none;
-        }
-        input[type="text"]:focus {
-            border-color: #8e24aa;
+            border: 2px solid #c084fc;
+            border-radius: 10px;
         }
         button {
             padding: 1rem;
             font-size: 1rem;
-            background-color: #8e24aa;
+            background-color: #7c3aed;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s ease;
         }
         button:hover {
-            background-color: #6a1b9a;
+            background-color: #5b21b6;
         }
         .result {
             margin-top: 2rem;
-            background: #f3e5f5;
+            background-color: #f3e8ff;
+            border-left: 5px solid #7c3aed;
             padding: 1.5rem;
             border-radius: 10px;
-            border: 1px solid #d1c4e9;
         }
         .result h3 {
-            margin-top: 0;
-            color: #6a1b9a;
+            color: #6b21a8;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
@@ -72,13 +69,19 @@
     <div class="container">
         <h1>Yapay Zeka Kavram Açıklayıcı</h1>
         <form method="post" action="/explain">
-            <input type="text" name="term" placeholder="Bir yapay zeka kavramı girin (örneğin: attention)" required>
+            <input type="text" name="term" placeholder="Bir yapay zeka kavramı girin (örneğin: attention)" value="{{ term if term else '' }}" required>
+
+            <select name="language">
+                <option value="en" {% if language == "en" %}selected{% endif %}>İngilizce</option>
+                <option value="tr" {% if language == "tr" %}selected{% endif %}>Türkçe</option>
+            </select>
+
             <button type="submit">Açıkla</button>
         </form>
 
         {% if explanation %}
         <div class="result">
-            <h3>Açıklama:</h3>
+            <h3><strong>{{ term|capitalize }}</strong> kavramının açıklaması:</h3>
             <p>{{ explanation }}</p>
         </div>
         {% endif %}

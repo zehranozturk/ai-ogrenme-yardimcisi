@@ -11,7 +11,11 @@ async def form_get(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/explain", response_class=HTMLResponse)
-async def form_post(request: Request, term: str = Form(...)):
-    explanation = explain_with_model(term)
-    return templates.TemplateResponse("index.html", {"request": request, "term": term, "explanation": explanation})
-
+async def form_post(request: Request, term: str = Form(...), language: str = Form("en")):
+    explanation = explain_with_model(term, language)
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+        "term": term,
+        "explanation": explanation,
+        "language": language
+    })
