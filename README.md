@@ -1,21 +1,23 @@
-# Yapay Zeka Kavram Açıklayıcı
+# Yapay Zeka Kavram Açıklayıcı 🌐🤖
 
-## Amaç
-Yeni nesil öğrenme konseptine uygun olarak, kullanıcıdan alınan bir kavramı Hugging Face üzerindeki `flan-t5-small` modeli ile açıklayan basit bir FastAPI uygulamasıdır.
+Bu proje, yapay zeka (AI) ile ilgili terimlerin basit bir dille açıklanmasını sağlayan web tabanlı bir yardımcı araçtır. Kullanıcı, istediği kavramı girerek Hugging Face API üzerinden çalışan bir modelden İngilizce veya Türkçe açıklama alabilir.
 
-## Kurulum
-1. Sanal ortam oluştur:
-    python3 -m venv venv
-    source venv/bin/activate
+## 🚀 Özellikler
 
-2. Gerekli paketleri yükle:
-    pip install -r requirements.txt
+- ✅ FastAPI destekli hızlı backend  
+- ✅ HTML/CSS ile responsive kullanıcı arayüzü  
+- ✅ Hugging Face üzerinden çalışan Flan-T5 modeli entegrasyonu  
+- ✅ Türkçe ve İngilizce dil seçenekleri  
+- ✅ Gerçek zamanlı açıklama üretimi  
 
-3. .env dosyası oluştur ve içine API tokenını ekle:
-    HF_TOKEN=hf_...
+## ⚙️ Kurulum
 
-4. Uygulamayı başlat:
-    uvicorn app.main:app --reload
-
-## Kullanım
-Tarayıcıdan `http://127.0.0.1:8000` adresine gidin ve bir kavram girin.
+```bash
+git clone https://github.com/zehranozturk/ai-ogrenme-yardimcisi.git
+cd ai-ogrenme-yardimcisi
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+🔗 Tarayıcıdan aç: http://127.0.0.1:8000
