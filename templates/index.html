@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yeni Nesil Öğrenme - Kavram Açıklayıcı</title>
+</head>
+<body>
+    <h1>Yapay Zeka Destekli Öğrenme Yardımcısı</h1>
+    <form method="post" action="/explain">
+        <input type="text" name="term" placeholder="Bir kavram girin..." required>
+        <button type="submit">Açıkla</button>
+    </form>
+
+    {% if term %}
+        <h2>{{ term }}</h2>
+        <p>{{ explanation }}</p>
+    {% endif %}
+</body>
+</html>
